@@ -7,7 +7,7 @@ const proxyUtils = require('./proxyUtils.js');
 const responseUtils = require("./responseUtil.js");
 const uuid = require('uuid/v1');
 const routes = require('./config/constants');
-const latexService = require('./latexService.js');
+// const latexService = require('./latexService.js');
 
 const envVariables = require('./config/environment');
 const BASE_URL = envVariables.BASE_URL;
@@ -16,8 +16,8 @@ var app = express();
 app.set('port', 3000);
 app.use(express.json())
 
-app.get(routes.API.LATEX.CONVERT, latexService.convert);
-app.post(routes.API.LATEX.CONVERT, bodyParser.json({ limit: '1mb' }), latexService.convert);
+// app.get(routes.API.LATEX.CONVERT, latexService.convert);
+// app.post(routes.API.LATEX.CONVERT, bodyParser.json({ limit: '1mb' }), latexService.convert);
 
 app.post(routes.API.USERS, function (req, res) {
   let response = {
