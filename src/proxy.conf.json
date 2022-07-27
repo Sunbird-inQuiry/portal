@@ -23,6 +23,12 @@
     "logLevel": "debug",
     "changeOrigin": true
   },
+  "/action/data/v3/telemetry": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
   "/api/channel/v1/read/*": {
     "target": "http://localhost:3000",
     "secure": false,

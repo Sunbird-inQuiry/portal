@@ -15,6 +15,7 @@ const BASE_URL = envVariables.BASE_URL;
 var app = express();
 app.set('port', 3000);
 app.use(express.json())
+app.use(express.static(process.cwd()+"/dist/"));
 
 app.get(routes.API.LATEX.CONVERT, latexService.convert);
 app.post(routes.API.LATEX.CONVERT, bodyParser.json({ limit: '1mb' }), latexService.convert);
@@ -54,7 +55,8 @@ app.use([
   routes.API.CHANNEL,
   routes.API.FRAMEWORK,
   routes.API.QUESTIONSET_READ,
-  routes.API.QUESTION_LIST
+  routes.API.QUESTION_LIST,
+  routes.API.TELEMMETRY
 ], proxy(BASE_URL, {
   https: true,
   proxyReqPathResolver: function (req) {
@@ -94,5 +96,9 @@ app.use([routes.API.PREFIX.API], proxy(BASE_URL, {
   },
   proxyReqOptDecorator: proxyUtils.decoratePublicRequestHeaders()
 }));
+
+app.get('/*', (req,res) => {
+    res.sendFile(process.cwd()+"/dist/index.html")
+});
 
 http.createServer(app).listen(app.get('port'), 3000);

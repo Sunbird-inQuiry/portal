@@ -20,8 +20,10 @@ export class QuestionsetEditorComponent implements OnInit {
     public helperService: HelperService) { }
 
   ngOnInit(): void {
+    const host = window.location.origin;
     this.activatedRoute.params.subscribe((params: any) => {
       this.editorConfig.context.identifier = params.id;
+      this.editorConfig.context.host = host;
       this.getQuestionsetDetails(params.id);
       this.editorConfig.config.mode = this.getEditorMode(params.status);
     });

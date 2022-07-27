@@ -6,6 +6,7 @@ module.exports = {
         "QUESTIONSET_READ": "/api/questionset/v1/read/*",
         "QUESTION_LIST": "api/question/v1/list",
         "USERS": "/action/users",
+        "TELEMMETRY": "/action/data/v3/telemetry",
         "PREFIX": {
             "ACTION": "/action",
             "ASSETS": "/assets",
