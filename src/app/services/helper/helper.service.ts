@@ -2,19 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data/data.service';
+import { ActionService } from '../action/action.service';
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private actionService: ActionService) { }
 
   getQuestionsetList(requestData: object): Observable<any> {
     const req = {
       url: 'composite/v1/search',
       data: requestData
     };
-    return this.dataService.post(req).pipe(
+    return this.actionService.post(req).pipe(
       map((response: any) => {
         return response;
       })
@@ -53,6 +56,6 @@ export class HelperService {
         request: reqBody
       }
     };
-    return this.dataService.post(req);
+    return this.actionService.post(req);
   }
 }
