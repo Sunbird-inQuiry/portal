@@ -28,8 +28,12 @@ export const questionSetEditorConfig = {
     endpoint: '/data/v3/telemetry',
     env: 'questionset_editor',
     framework: 'ekstep_ncert_k-12',
-    cloudStorageUrls: ['https://s3.ap-south-1.amazonaws.com/ekstep-public-qa/', 'https://ekstep-public-qa.s3-ap-south-1.amazonaws.com/',
-      'https://sunbirddev.blob.core.windows.net/sunbird-content-dev/'],
+    cloudStorageUrls: ['https://sunbirdstagingpublic.blob.core.windows.net/sunbird-content-staging'],
+    cloudStorage: {
+      presigned_headers: {
+        'x-ms-blob-type': 'BlockBlob'
+      }
+    },
     additionalCategories: [],
     labels: {
       save_collection_btn_label: 'Save as Draft',
