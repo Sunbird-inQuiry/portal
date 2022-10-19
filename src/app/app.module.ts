@@ -21,6 +21,8 @@ import { EditConfigurationComponent } from './components/edit-configuration/edit
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionsetEditorComponent } from './components/questionset-editor/questionset-editor.component';
@@ -70,7 +72,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CollectionEditorLibraryModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatMenuModule
   ],
   providers: [
     {
