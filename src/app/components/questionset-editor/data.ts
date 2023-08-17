@@ -183,6 +183,8 @@ export const observationEditorConfig = {
         }
       }
     },
-    contentPolicyUrl: '/term-of-use.html'
+    contentPolicyUrl: '/term-of-use.html',
+    assetProxyUrl: '/assets/public/',
+    commonFrameworkLicenseUrl: 'https://creativecommons.org/licenses/'
   }
 };
