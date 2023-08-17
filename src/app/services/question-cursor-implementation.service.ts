@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { QuestionCursor } from '@project-sunbird/sunbird-quml-player';
-import { Question } from '@project-sunbird/sunbird-quml-player/lib/quml-library-interface';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiEndPoints } from '../app.constant';
@@ -9,11 +7,11 @@ import { ContentService } from './content.service';
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionCursorImplementationService implements QuestionCursor {
+export class QuestionCursorImplementationService {
 
   constructor(private contentService: ContentService) { }
 
-  getQuestions(identifiers: string[], parentId?: string): Observable<Question> {
+  getQuestions(identifiers: string[], parentId?: string): Observable<any> {
     const option: any = {
       url: `${ApiEndPoints.questionList}`,
       data: {
@@ -27,7 +25,7 @@ export class QuestionCursorImplementationService implements QuestionCursor {
     }));
   }
 
-  getQuestion(identifier: string): Observable<Question> {
+  getQuestion(identifier: string): Observable<any> {
     const option: any = {
       url: `${ApiEndPoints.questionList}`,
       data: {
@@ -41,13 +39,16 @@ export class QuestionCursorImplementationService implements QuestionCursor {
 
   getQuestionSet(identifier: string): Observable<any> {
     const hierarchy = this.contentService.get(`${ApiEndPoints.getQuestionSetHierarchy}${identifier}`);
-    const questionSetResponse = this.contentService.get(`${ApiEndPoints.questionSetRead}${identifier}?fields=instructions`);
+    const questionSetResponse = this.contentService.get(`${ApiEndPoints.questionSetRead}${identifier}?fields=instructions,outcomeDeclaration`);
     return (
       forkJoin([hierarchy, questionSetResponse]).pipe(map((res: any) => {
-        const questionSet = res[0]?.result.questionSet;
-        const instructions = res[1].result.questionset.instructions;
+        const questionSet = res[0]?.result.questionset;
+        const { instructions, outcomeDeclaration } = res[1].result.questionset;
         if (instructions && questionSet) {
           questionSet.instructions = instructions;
+        }
+        if (outcomeDeclaration && questionSet) {
+          questionSet.outcomeDeclaration = outcomeDeclaration;
         }
         return questionSet;
       })

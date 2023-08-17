@@ -3,15 +3,13 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable, of, throwError} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, mergeMap } from 'rxjs/operators';
-import { QuestionCursor } from '@project-sunbird/sunbird-quml-player';
-import { EditorCursor } from '@project-sunbird/sunbird-questionset-editor';
 import * as _ from 'lodash-es';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class EditorCursorImplementationService implements QuestionCursor, EditorCursor {
+export class EditorCursorImplementationService {
   public questionMap =  new Map();
   constructor(private http: HttpClient) {} // @Inject(HttpClient)
 
@@ -58,7 +56,7 @@ export class EditorCursorImplementationService implements QuestionCursor, Editor
         headers: { 'Content-Type': 'application/json' }
     };
     const requestParam = {
-      url: 'api/question/v1/list',
+      url: 'api/question/v2/list',
       data: {
         request: {
           search: {

@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QumlPlayerConfig } from '@project-sunbird/sunbird-quml-player/lib/quml-library-interface';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { QuestionCursorImplementationService } from 'src/app/services/question-cursor-implementation.service';
 import { EditConfigurationComponent } from '../edit-configuration/edit-configuration.component';
 import { SamplePlayerData } from './player-data';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-player',
@@ -15,9 +15,9 @@ import { SamplePlayerData } from './player-data';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit, OnDestroy {
-
-  playerConfig: QumlPlayerConfig;
-  editConfig = {
+  @ViewChild('qumlPlayer') qumlPlayer: ElementRef;
+  playerConfig: any;
+  editConfig: any = {
     showFeedback: '',
     showSubmitConfirmation: '',
     summaryType: '',
@@ -66,13 +66,37 @@ export class PlayerComponent implements OnInit, OnDestroy {
       metadata,
       data: {}
     };
+    this.loadPlayer({changeConfig: true});
+  }
+
+  loadPlayer(changeConfig?) {
+    if (changeConfig.changeConfig) {
+      this.qumlPlayer.nativeElement.innerHTML = '';
+    }
+    const playerConfig = this.playerConfig;
+    const qumlElement = document.createElement('sunbird-quml-player');
+    (window as any).questionListUrl = "/api/question/v2/list";
+    qumlElement.setAttribute('player-config', JSON.stringify(playerConfig));
+    qumlElement.addEventListener('playerEvent', (event) => {
+      const customEvent: any = event;
+      if (customEvent.detail.edata.type === 'NEXT_CONTENT_PLAY') {
+        this.qumlPlayer.nativeElement.innerHTML = '';
+        this.router.navigate(['/player', this.nextContents[0].id]);
+      }
+    });
+    qumlElement.addEventListener('telemetryEvent', (event) => {
+      const customEvent: any = event;
+      console.log("telemetryEvent", customEvent.detail);
+    });
+
+    this.qumlPlayer.nativeElement.append(qumlElement);
   }
 
   setConfig(): void {
-    this.editConfig.showFeedback = this.playerConfig.metadata?.children?.every(child => child.showFeedback === 'Yes') ? 'Yes' : 'No';
+    this.editConfig.showFeedback = this.playerConfig.metadata?.children?.every(child => child.showFeedback === true) ? 'Yes' : 'No';
     this.editConfig.showSubmitConfirmation = this.playerConfig.metadata.requiresSubmit ? this.playerConfig.metadata.requiresSubmit : '';
     this.editConfig.summaryType = this.playerConfig.metadata.summaryType ? this.playerConfig.metadata.summaryType : '';
-    this.editConfig.showTimer = this.playerConfig.metadata.showTimer ? this.playerConfig.metadata.showTimer : '';
+    this.editConfig.showTimer = this.playerConfig.metadata.showTimer ? 'Yes' : 'No';
   }
 
   changeConfig(): void {
@@ -103,11 +127,11 @@ export class PlayerComponent implements OnInit, OnDestroy {
     if (result.showFeedback) {
       if (result.showFeedback === 'Yes') {
         this.playerConfig.metadata.children.forEach(child => {
-          child.showFeedback = 'Yes';
+          child.showFeedback = true;
         });
       } else {
         this.playerConfig.metadata.children.forEach(child => {
-          child.showFeedback = 'No';
+          child.showFeedback = false;
         });
       }
     }
@@ -124,14 +148,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
     /* istanbul ignore else */
     if (result.showTimer) {
-      this.playerConfig.metadata.showTimer = result.showTimer;
+      this.playerConfig.metadata.showTimer = result.showTimer === 'Yes' ? true: false;
 
       /* istanbul ignore else */
       if (result.showTimer === 'Yes' && !this.playerConfig.metadata.timeLimits) {
-        this.playerConfig.metadata.timeLimits = {
-          maxTime: '120',
-          warningTime: '10'
-        };
+        const timeLimits ={ 
+          questionSet: {
+            max: 120
+          }
+        }
+        this.playerConfig.metadata = {...this.playerConfig.metadata,timeLimits }
       }
     }
 
@@ -144,13 +170,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
   switchToLandscapeMode() {
     this.showPortrait = false;
-  }
-
-  onPlayerEvent(event) {
-    /* istanbul ignore else */
-    if (event?.edata?.type === 'NEXT_CONTENT_PLAY') {
-      this.router.navigate(['/player', this.nextContents[0].id]);
-    }
   }
 
   ngOnDestroy(): void {

@@ -3,7 +3,7 @@
         <div class="twelve wide column ">
             <div class="ui grid">
                 <div class="three wide column">
-                    <div class="ui link card" (click)="createContent()">
+                    <div class="ui link card" (click)="createContent('Practice Question Set')">
                         <div class="content">
                             <div class="textcontent">
                                 <i class='my-icon file text outline icon'></i>
@@ -12,6 +12,28 @@
                         </div>
                     </div>
                     <p class="workspaceinstuction">Create Questionsets</p>
+                </div>
+                <div class="three wide column">
+                    <div class="ui link card" [matMenuTriggerFor]="menu">
+                        <div class="content">
+                            <div class="textcontent">
+                                <i class='my-icon file text outline icon'></i>
+                                <span class="my-text">Shikshalokam QuestionSet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="workspaceinstuction">Create Questionsets</p>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="createContent('Observation')">
+                          <span>Observation</span>
+                        </button>
+                        <button mat-menu-item (click)="createContent('Survey')">
+                          <span>Survey</span>
+                        </button>
+                        <button mat-menu-item (click)="createContent('Observation with rubrics')">
+                          <span>Observation with rubrics</span>
+                        </button>
+                    </mat-menu>
                 </div>
             </div>
         </div>

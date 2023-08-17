@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { questionSetEditorConfig } from './data';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { observationEditorConfig } from './data';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
@@ -12,7 +12,8 @@ import * as _ from 'lodash-es';
 })
 export class QuestionsetEditorComponent implements OnInit {
 
-  public editorConfig: any = questionSetEditorConfig;
+  @ViewChild('questionsetEditor') inQuiryEditor: ElementRef;
+  public editorConfig: any = observationEditorConfig;
   channelData: any;
   questionsetData: any;
   routeParams: any;
@@ -60,6 +61,29 @@ export class QuestionsetEditorComponent implements OnInit {
     this.editorConfig.context.tags = [this.userService.userProfile.channelId];
     const additionalCategory = _.merge(this.channelData.contentAdditionalCategories, this.channelData.collectionAdditionalCategories);
     this.editorConfig.context.additionalCategories = additionalCategory;
+    setTimeout(() => {
+      this.loadEditor();
+    });
+  }
+
+  loadEditor() {
+    const editorConfig = this.editorConfig;
+    const questionsetEditorElement = document.createElement('lib-questionset-editor');
+    questionsetEditorElement.setAttribute('editor-config', JSON.stringify(editorConfig));
+
+    questionsetEditorElement.addEventListener('editorEmitter', (event) => {
+      const customEvent: any = event;
+      console.log("On editorEvent", customEvent.detail);
+      if (customEvent.detail.action === 'backContent' || customEvent.detail.action === 'submitContent' || customEvent.detail.action === 'publishContent' || customEvent.detail.action === 'rejectContent') {
+        if (_.has(this.routeParams, 'state') && this.routeParams.state === 'create') {
+          this.router.navigate(['/questionset/questionset-list', 1]);
+        } else {
+          this.navigationService.goBack();
+        }
+      }
+    });
+
+    this.inQuiryEditor.nativeElement.append(questionsetEditorElement);
   }
 
   editorEventListener(event): any {

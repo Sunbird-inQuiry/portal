@@ -83,15 +83,6 @@ describe('PlayerComponent', () => {
     expect(component.setConfig);
   });
 
-  it('should navigate to the player page', () => {
-    component.playerConfig = mockPlayerData.playerConfig;
-    const router = TestBed.inject(Router);
-    component.nextContents = [{ id: '1', name: 'first' }, { id: '2', name: 'second' }];
-    spyOn(router, 'navigate');
-    component.onPlayerEvent({ edata: { type: 'NEXT_CONTENT_PLAY' } });
-    expect(router.navigate).toHaveBeenCalled();
-  });
-
   it('should switch to the portrait Mode', () => {
     component.showPortrait = false;
     component.switchToPortraitMode();

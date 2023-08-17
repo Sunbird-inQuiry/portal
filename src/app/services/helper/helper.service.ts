@@ -28,7 +28,7 @@ export class HelperService {
     // const param = { fields: this.configService.editorConfig.DEFAULT_PARAMS_FIELDS };
     const param = {};
     const req = {
-      url: 'questionset/v1/read/' + questionsetId,
+      url: 'questionset/v2/read/' + questionsetId,
       param: { ...param, ...option.params },
     };
     return this.dataService.get(req).pipe(
@@ -51,7 +51,7 @@ export class HelperService {
 
   createContent(reqBody): Observable<any> {
     const req = {
-      url: 'questionset/v1/create',
+      url: 'questionset/v2/create',
       data: {
         request: reqBody
       }
@@ -61,7 +61,7 @@ export class HelperService {
 
   deleteQuestionset(questionsetId): Observable<any> {
     const option = {
-      url: 'questionset/v1/retire/' + questionsetId,
+      url: 'questionset/v2/retire/' + questionsetId,
       data: {
         request: {
           questionSet: {}
