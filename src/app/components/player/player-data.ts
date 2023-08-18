@@ -3,7 +3,7 @@ export const SamplePlayerData = {
     'context': {
       'threshold': 3,
       'mode': 'play',
-      'authToken': '',
+      'authToken': ' ',
       'sid': '913b3c6c-2874-26dd-ed0c-c23ddc00b718',
       'did': '561c348e631fd225b46a5571cbd42ad1',
       'uid': '',

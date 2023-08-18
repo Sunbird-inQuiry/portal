@@ -66,10 +66,6 @@ import { ToasterService } from '../app/services/toaster/toaster.service';
     MatCheckboxModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
-    MatMenuModule,
-=======
->>>>>>> inquiry/release-6.2.0
     AppRoutingModule
   ],
   providers: [

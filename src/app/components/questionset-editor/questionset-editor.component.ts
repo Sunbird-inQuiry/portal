@@ -1,9 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-<<<<<<< HEAD
-import { observationEditorConfig } from './data';
-=======
 import { questionSetEditorConfig } from './data';
->>>>>>> inquiry/release-6.2.0
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
@@ -17,11 +13,7 @@ import * as _ from 'lodash-es';
 export class QuestionsetEditorComponent implements OnInit {
 
   @ViewChild('questionsetEditor') inQuiryEditor: ElementRef;
-<<<<<<< HEAD
-  public editorConfig: any = observationEditorConfig;
-=======
   public editorConfig: any = questionSetEditorConfig;
->>>>>>> inquiry/release-6.2.0
   channelData: any;
   questionsetData: any;
   routeParams: any;
