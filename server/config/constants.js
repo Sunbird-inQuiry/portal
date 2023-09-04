@@ -1,13 +1,13 @@
 module.exports = {
     "API": {
-        "CHANNEL": "/action/channel/v1/*",
-        "FRAMEWORK": "/api/framework/v1/read/*",
+        "CHANNEL": "/action/channel/v2/*",
+        "FRAMEWORK": "/api/framework/v2/read/*",
         "COMPOSITE": "/action/composite/v3/search",
         "COMPOSITE_API": "/api/composite/v1/search",
         "QUESTION_LIST": "/api/question/v2/list",
         "USERS": "/action/users",
         "TELEMMETRY": "/action/data/v3/telemetry",
-        "OBJECT_CATEGORY_DEFINITION": "/action/object/category/definition/v1/*",
+        "OBJECT_CATEGORY_DEFINITION": "/action/object/category/definition/v2/*",
         "PREFIX": {
             "ACTION": "/action",
             "ASSETS": "/assets",
@@ -30,9 +30,9 @@ module.exports = {
             "RETIRE": "/action/questionset/v2/retire/*"
         },
         "ASSET": {
-            "CREATE": "/action/asset/v1/create",
+            "CREATE": "/action/asset/v2/create",
             "CONTENT_UPLOAD_URL": "/action/content/v3/upload/url/*",
-            "ASSET_UPLOAD": "/action/asset/v1/upload/*"
+            "ASSET_UPLOAD": "/action/asset/v2/upload/*"
         }
     }
 }

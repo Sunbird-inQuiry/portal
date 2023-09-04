@@ -22,12 +22,12 @@ export class QuestionsetCreateComponent implements OnInit {
     }
   }
 
-  createContent(): void {
+  createContent(primaryCategory:string): void {
     const requestData = {
         questionset: {
           name: 'Untitled QuestionSet',
           mimeType: 'application/vnd.sunbird.questionset',
-          primaryCategory: 'Practice Question Set',
+          primaryCategory: primaryCategory,
           createdBy: this.userService.userProfile.id,
           createdFor: [this.userService.userProfile.channelId],
           framework: this.userService.userProfile.frameworkId,
