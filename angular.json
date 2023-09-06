@@ -33,18 +33,18 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/@project-sunbird/sunbird-questionset-editor-web-component/assets/",
+                "input": "node_modules/sunbird-questionset-editor-web-component/assets/",
                 "output": "/assets/"
               }
             ],
             "styles": [
               "src/theme.scss",
               "src/styles.scss",
-              "./node_modules/@project-sunbird/sunbird-questionset-editor-web-component/styles.css"
+              "./node_modules/sunbird-questionset-editor-web-component/styles.css"
             ],
             "scripts": [
               "node_modules/@project-sunbird/sunbird-quml-player-web-component/sunbird-quml-player.js",
-              "node_modules/@project-sunbird/sunbird-questionset-editor-web-component/sunbird-questionset-editor.js"
+              "node_modules/sunbird-questionset-editor-web-component/sunbird-questionset-editor.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
