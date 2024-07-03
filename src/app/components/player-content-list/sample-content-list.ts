@@ -2,15 +2,15 @@ import { environment } from "../../../environments/environment";
 
 const devContents = {
   mcq: [
-    { id: 'do_21368754222912307211', name: 'MCQ Question Set 1', category: 'vertical' },
-    { id: 'do_213687603848978432126', name: 'MCQ Question Set 2', category: 'vertical' },
-    { id: 'do_213687561852166144116', name: 'Horizontal Layout QuestionSet 1', category: 'horizontal' },
-    { id: 'do_213687570690523136121', name: 'Grid layout QuestionSet 1', category: 'grid' },
-    { id: 'do_213687609530638336142', name: 'Javascript MCQ with solutions', category: 'solutions' }
+    { id: 'do_2138622515299368961170', name: 'Short Text Question Set', category: 'vertical' },
+    { id: 'do_2138622578918113281177', name: 'Long Text Question Set', category: 'vertical' },
+    { id: 'do_213858696649670656138', name: 'Horizontal Layout QuestionSet', category: 'horizontal' },
+    { id: 'do_2138621952034570241163', name: 'Grid layout QuestionSet', category: 'grid' },
+    { id: 'do_2138624000374702081209', name: 'MCQ with solutions', category: 'solutions' }
   ],
   sa: [
-    { id: 'do_213687555691986944110', name: 'Subjective question set 1' },
-    { id: 'do_213687607599996928135', name: 'Subjective question set 2' }
+    { id: 'do_2138623295549685761189', name: 'Subjective question set 1' },
+    { id: 'do_2138623514862387201196', name: 'Subjective question set 2' }
   ]
 }
 

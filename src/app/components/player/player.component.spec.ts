@@ -117,7 +117,7 @@ describe('PlayerComponent', () => {
     spyOn(component, 'setConfig');
     spyOn(component, 'changeConfig');
     component.playerConfig = mockPlayerData.playerConfig;
-    component.updateConfig({ showFeedback: 'Yes', showSubmitConfirmation: true, summaryType: 'full', showTimer: 'Yes' });
+    component.updateConfig({ showFeedback: true, showSubmitConfirmation: true, summaryType: 'full', showTimer: true });
     expect(component.setConfig).toHaveBeenCalled();
     expect(component.changeConfig).toHaveBeenCalled();
   });
@@ -126,7 +126,7 @@ describe('PlayerComponent', () => {
     spyOn(component, 'setConfig');
     spyOn(component, 'changeConfig');
     component.playerConfig = mockPlayerData.playerConfig;
-    component.updateConfig({ showFeedback: 'No', showSubmitConfirmation: true, summaryType: 'full', showTimer: 'Yes' });
+    component.updateConfig({ showFeedback: false, showSubmitConfirmation: true, summaryType: 'full', showTimer: true });
     expect(component.setConfig).toHaveBeenCalled();
     expect(component.changeConfig).toHaveBeenCalled();
   });

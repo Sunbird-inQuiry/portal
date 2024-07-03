@@ -23,7 +23,7 @@ export const questionSetEditorConfig = {
     },
     tags: ['01309282781705830427'],
     timeDiff: 5,
-    host: '',
+    host: 'https://dev.inquiry.sunbird.org/',
     defaultLicense: 'CC BY 4.0',
     endpoint: '/data/v3/telemetry',
     env: 'questionset_editor',
@@ -31,9 +31,11 @@ export const questionSetEditorConfig = {
     cloudStorageUrls: [
         'https://sunbirdstagingpublic.blob.core.windows.net/sunbird-content-staging/',
         'https://sunbirddevbbpublic.blob.core.windows.net/sunbird-content-staging/',
-        'https://obj.devbb.sunbird.org/sunbird-content-staging/'
+        'https://obj.devbb.sunbird.org/sunbird-content-staging/',
+        'https://sunbirddevbbpublic.blob.core.windows.net/sunbird-content-staging'
     ],
     cloudStorage: {
+      provider: 'azure',
       presigned_headers: {
         'x-ms-blob-type': 'BlockBlob'
       }

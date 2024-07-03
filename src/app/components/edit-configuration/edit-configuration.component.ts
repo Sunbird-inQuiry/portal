@@ -11,10 +11,10 @@ export class EditConfigurationComponent implements OnInit {
 
   feedbackValue: string;
   editConfigForm = this.fb.group({
-    showFeedback: [''],
-    showSubmitConfirmation: [''],
-    summaryType: [''],
-    showTimer: [''],
+    showFeedback: [true],
+    showSubmitConfirmation: ['Yes'],
+    summaryType: ['Complete'],
+    showTimer: [true],
   });
   summaryTypeOptions = [
     { label: 'Complete', value: 'Complete' },

@@ -7,6 +7,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 import { QuestionCursorImplementationService } from 'src/app/services/question-cursor-implementation.service';
 import { EditConfigurationComponent } from '../edit-configuration/edit-configuration.component';
 import { SamplePlayerData } from './player-data';
+import * as _ from 'lodash-es';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -18,10 +19,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   @ViewChild('qumlPlayer') qumlPlayer: ElementRef;
   playerConfig: any;
   editConfig: any = {
-    showFeedback: '',
-    showSubmitConfirmation: '',
-    summaryType: '',
-    showTimer: '',
+    showFeedback: true,
+    showSubmitConfirmation: 'Yes',
+    summaryType: 'Complete',
+    showTimer: true,
   };
   showPortrait = false;
   nextContents: { id: string, name: string }[] = [];
@@ -74,6 +75,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.qumlPlayer.nativeElement.innerHTML = '';
     }
     const playerConfig = this.playerConfig;
+    console.log('playerConfig', playerConfig);
     const qumlElement = document.createElement('sunbird-quml-player');
     (window as any).questionListUrl = "/api/question/v2/list";
     qumlElement.setAttribute('player-config', JSON.stringify(playerConfig));
@@ -93,10 +95,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   }
 
   setConfig(): void {
-    this.editConfig.showFeedback = this.playerConfig.metadata?.children?.every(child => child.showFeedback === true) ? 'Yes' : 'No';
+    this.editConfig.showFeedback = this.playerConfig.metadata?.children?.every(child => child.showFeedback === true) ? true : false;
     this.editConfig.showSubmitConfirmation = this.playerConfig.metadata.requiresSubmit ? this.playerConfig.metadata.requiresSubmit : '';
     this.editConfig.summaryType = this.playerConfig.metadata.summaryType ? this.playerConfig.metadata.summaryType : '';
-    this.editConfig.showTimer = this.playerConfig.metadata.showTimer ? 'Yes' : 'No';
+    this.editConfig.showTimer = this.playerConfig.metadata.showTimer ? true : false;
   }
 
   changeConfig(): void {
@@ -124,8 +126,8 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   updateConfig(result): void {
     /* istanbul ignore else */
-    if (result.showFeedback) {
-      if (result.showFeedback === 'Yes') {
+    if (!_.isUndefined(result.showFeedback)) {
+      if (result.showFeedback === true) {
         this.playerConfig.metadata.children.forEach(child => {
           child.showFeedback = true;
         });
@@ -147,12 +149,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
 
     /* istanbul ignore else */
-    if (result.showTimer) {
-      this.playerConfig.metadata.showTimer = result.showTimer === 'Yes' ? true: false;
+    if (!_.isUndefined(result.showTimer)) {
+      this.playerConfig.metadata.showTimer = result.showTimer === true ? true: false;
 
       /* istanbul ignore else */
-      if (result.showTimer === 'Yes' && !this.playerConfig.metadata.timeLimits) {
-        const timeLimits ={ 
+      if (result.showTimer === true && !this.playerConfig.metadata.timeLimits) {
+        const timeLimits = {
           questionSet: {
             max: 120
           }

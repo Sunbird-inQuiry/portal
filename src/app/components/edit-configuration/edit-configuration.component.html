@@ -11,9 +11,9 @@
         <h4 class="field-label">Show Question Feedback</h4>
         <mat-form-field appearance="fill">
           <mat-label>Choose Option</mat-label>
-          <mat-select formControlName="showFeedback" name="showFeedback">
-            <mat-option value="Yes">Yes</mat-option>
-            <mat-option value="No">No</mat-option>
+          <mat-select formControlName="showFeedback">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -45,9 +45,9 @@
         <!--should take care of adding time-->
         <mat-form-field appearance="fill">
           <mat-label>Choose Option</mat-label>
-          <mat-select formControlName="showTimer" name="showTimer">
-            <mat-option value="Yes">Yes</mat-option>
-            <mat-option value="No">No</mat-option>
+          <mat-select formControlName="showTimer">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

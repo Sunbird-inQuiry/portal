@@ -81,7 +81,7 @@ export const mockPlayerData = {
               "subject": [
                 "Mathematics"
               ],
-              "showTimer": "No",
+              "showTimer": false,
               "identifier": "do_1135404643457597441111",
               "gradeLevel": [
                 "Class 4"
@@ -119,7 +119,7 @@ export const mockPlayerData = {
                 "English"
               ],
               "board": "CBSE",
-              "showFeedback": "No",
+              "showFeedback": false,
               "objectType": "Question",
               "status": "Live",
               "createdBy": "5a587cc1-e018-4859-a0a8-e842650b9d64",
@@ -136,7 +136,7 @@ export const mockPlayerData = {
               "artifactUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404643457597441111/do_1135404643457597441111_1652888910498.zip",
               "visibility": "Parent",
               "qType": "MCQ",
-              "showSolutions": "No",
+              "showSolutions":  false,
               "variants": {
                 "full": {
                   "ecarUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404643457597441111/q1_1652888910825_do_1135404643457597441111_1.ecar",
@@ -162,7 +162,7 @@ export const mockPlayerData = {
               "subject": [
                 "Mathematics"
               ],
-              "showTimer": "No",
+              "showTimer": false,
               "identifier": "do_1135404648776908801113",
               "gradeLevel": [
                 "Class 4"
@@ -200,7 +200,7 @@ export const mockPlayerData = {
                 "English"
               ],
               "board": "CBSE",
-              "showFeedback": "No",
+              "showFeedback": false,
               "objectType": "Question",
               "status": "Live",
               "createdBy": "5a587cc1-e018-4859-a0a8-e842650b9d64",
@@ -217,7 +217,7 @@ export const mockPlayerData = {
               "artifactUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404648776908801113/do_1135404648776908801113_1652888911609.zip",
               "visibility": "Parent",
               "qType": "MCQ",
-              "showSolutions": "No",
+              "showSolutions":  false,
               "variants": {
                 "full": {
                   "ecarUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404648776908801113/q2_1652888911870_do_1135404648776908801113_1.ecar",
@@ -243,7 +243,7 @@ export const mockPlayerData = {
               "subject": [
                 "Mathematics"
               ],
-              "showTimer": "No",
+              "showTimer": false,
               "identifier": "do_1135404653873889281115",
               "gradeLevel": [
                 "Class 4"
@@ -281,7 +281,7 @@ export const mockPlayerData = {
                 "English"
               ],
               "board": "CBSE",
-              "showFeedback": "No",
+              "showFeedback": false,
               "objectType": "Question",
               "status": "Live",
               "createdBy": "5a587cc1-e018-4859-a0a8-e842650b9d64",
@@ -298,7 +298,7 @@ export const mockPlayerData = {
               "artifactUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404653873889281115/do_1135404653873889281115_1652888912553.zip",
               "visibility": "Parent",
               "qType": "MCQ",
-              "showSolutions": "No",
+              "showSolutions":  false,
               "variants": {
                 "full": {
                   "ecarUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/question/do_1135404653873889281115/q3_1652888912814_do_1135404653873889281115_1.ecar",
@@ -317,9 +317,8 @@ export const mockPlayerData = {
           "navigationMode": "non-linear",
           "createdOn": "2022-05-18T15:43:31.054+0000",
           "channel": "01309282781705830427",
-          "generateDIALCodes": "No",
           "lastUpdatedOn": "2022-05-18T15:48:12.125+0000",
-          "showTimer": "No",
+          "showTimer": false,
           "identifier": "do_1135404635017543681109",
           "description": "Section 1",
           "containsUserData": "No",
@@ -346,7 +345,7 @@ export const mockPlayerData = {
           "language": [
             "English"
           ],
-          "showFeedback": "No",
+          "showFeedback": false,
           "objectType": "QuestionSet",
           "status": "Live",
           "requiresSubmit": "No",
@@ -357,7 +356,7 @@ export const mockPlayerData = {
           "contentDisposition": "inline",
           "allowBranching": "No",
           "visibility": "Parent",
-          "showSolutions": "No",
+          "showSolutions":  false,
           "index": 1
         }
       ],
@@ -369,14 +368,13 @@ export const mockPlayerData = {
       ],
       "channel": "01309282781705830427",
       "pdfUrl": "",
-      "generateDIALCodes": "No",
       "maxScore": 3,
       "lastUpdatedOn": "2022-05-18T15:48:12.139+0000",
       "subject": [
         "Mathematics"
       ],
       "size": 12527,
-      "showTimer": "No",
+      "showTimer": false,
       "identifier": "do_1135404628350730241108",
       "description": "MCQ Question Set 1",
       "gradeLevel": [
@@ -421,7 +419,7 @@ export const mockPlayerData = {
         "English"
       ],
       "board": "CBSE",
-      "showFeedback": "Yes",
+      "showFeedback": true,
       "lastPublishedOn": "2022-05-18T15:48:33.500+0000",
       "objectType": "QuestionSet",
       "status": "Live",
@@ -449,7 +447,7 @@ export const mockPlayerData = {
         "do_1135404653873889281115"
       ],
       "visibility": "Default",
-      "showSolutions": "No",
+      "showSolutions":  false,
       "variants": {
         "spine": {
           "ecarUrl": "https://sunbirddev.blob.core.windows.net/sunbird-content-dev/questionset/do_1135404628350730241108/mcq-question-set-1_1652888917402_do_1135404628350730241108_1_SPINE.ecar",

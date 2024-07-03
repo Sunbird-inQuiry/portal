@@ -12,7 +12,6 @@ const fs = require('fs')
 
 const envVariables = require('./config/environment');
 const BASE_URL = envVariables.BASE_URL;
-const CONTENT_PROXY_URL = envVariables.CONTENT_PROXY_URL;
 
 var app = express();
 app.use(bodyParser.json({limit: '1mb'}));
@@ -125,17 +124,6 @@ app.use([routes.API.PREFIX.ACTION], proxy(BASE_URL, {
   proxyReqOptDecorator: proxyUtils.decoratePublicRequestHeaders()
 }));
 
-const proxyReqPathResolverMethod = function (req) {
-  let originalUrl = req.originalUrl.replace("/assets/public/content/assets/", "/content/assets/");
-  const url = urlHelper.parse(CONTENT_PROXY_URL + originalUrl).path;
-  return url;
-}
-
-app.all('/assets/public/*', proxy(CONTENT_PROXY_URL, {
-  proxyReqPathResolver: function(req) {
-    return proxyReqPathResolverMethod(req);
-  }
-}));
 
 app.use([routes.API.PREFIX.API, routes.API.PREFIX.ASSETS], proxy(BASE_URL, {
   https: true,

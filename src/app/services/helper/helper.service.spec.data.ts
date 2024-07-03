@@ -21,8 +21,7 @@ export const mockData = {
                     primaryCategory: 'Practice Question Set',
                     contentEncoding: 'gzip',
                     lockKey: '489cf063-b10a-4e13-843b-ca17071786a5',
-                    generateDIALCodes: 'No',
-                    showSolutions: 'No',
+                    showSolutions: false,
                     trackable: {
                         enabled: 'No',
                         autoBatch: 'No'
@@ -32,7 +31,7 @@ export const mockData = {
                         'Student'
                     ],
                     visibility: 'Default',
-                    showTimer: 'No',
+                    showTimer: false,
                     author: 'N11',
                     consumerId: 'bfe5883f-ac66-4744-a064-3ed88d986eba',
                     childNodes: [
@@ -71,7 +70,7 @@ export const mockData = {
                     summaryType: 'Complete',
                     setType: 'materialised',
                     versionKey: '1656678079538',
-                    showFeedback: 'No',
+                    showFeedback: false,
                     framework: 'ekstep_ncert_k-12',
                     depth: 0,
                     createdBy: '5a587cc1-e018-4859-a0a8-e842650b9d64',
